@@ -1,1 +1,8 @@
 /citr-v6-project
+adopt-me/node_modules/
+.cache/
+dist/
+.env
+.DS_STORE
+coverage/
+.vscode/
