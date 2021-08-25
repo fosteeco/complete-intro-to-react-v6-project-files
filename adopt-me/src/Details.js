@@ -2,6 +2,7 @@ import { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
+import ThemeContext from "./ThemeContext";
 
 class Details extends Component {
   state = { loading: true };
@@ -41,7 +42,6 @@ class Details extends Component {
     // });
   }
   render() {
-    throw new Error("error lol");
     if (this.state.loading) {
       return <h2>Loading...</h2>;
     }
@@ -57,7 +57,11 @@ class Details extends Component {
             {animal} - {breed} - {city}, {state}
           </h2>
           <p>{description}</p>
-          <button>Adopt {name}</button>
+          <ThemeContext.Consumer>
+            {([theme]) => (
+              <button style={{ backgroundColor: theme }}>Adopt {name}</button>
+            )}
+          </ThemeContext.Consumer>
         </div>
       </div>
     );
